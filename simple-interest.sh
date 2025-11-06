@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # simple-interest.sh
 # Usage: ./simple-interest.sh principal rate(%) years
 P=$1
@@ -10,6 +10,6 @@ if [ -z "$P" ] || [ -z "$R" ] || [ -z "$T" ]; then
   exit 1
 fi
 
-# compute simple interest: (P*R*T)/100
-SI=$(echo "scale=2; $P * $R * $T / 100" | bc)
+# compute simple interest: (P * R * T) / 100
+SI=$(awk "BEGIN {printf \"%.2f\", ($P * $R * $T) / 100}")
 echo "Simple Interest: $SI"
